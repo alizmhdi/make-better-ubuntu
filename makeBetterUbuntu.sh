@@ -20,6 +20,9 @@ sudo snap install pycharm-community --classic
 #python package
 pip install requests
 
+#node
+sudo apt install npm
+sudo apt install nodejs
 
 #docker
 curl -fsSL https://get.docker.com -o get-docker.sh
