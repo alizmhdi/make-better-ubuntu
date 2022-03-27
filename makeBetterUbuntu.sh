@@ -19,10 +19,13 @@ pip --version
 sudo snap install pycharm-community --classic
 #python package
 pip install requests
+pip install pandas
+
 
 #node
 sudo apt install npm
 sudo apt install nodejs
+
 
 #docker
 curl -fsSL https://get.docker.com -o get-docker.sh
