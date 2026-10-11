@@ -47,6 +47,14 @@ A comprehensive setup script for Ubuntu-based development environments.
 - PyCharm Community
 - Postman
 
+### AI
+- Claude Code (`claude`)
+- OpenAI Codex CLI (`codex`)
+- GitHub Copilot CLI (`copilot`)
+- Gemini CLI (`gemini`)
+- Ollama (run models locally)
+- VS Code extensions: GitHub Copilot Chat, Claude Code, Codex
+
 ### Communication
 - Telegram
 - Discord
@@ -64,3 +72,5 @@ A comprehensive setup script for Ubuntu-based development environments.
   docker --version && node --version && python --version
   ```
 - Restart for Docker group permissions
+- Sign in to the AI tools on first run (`claude`, `codex`, `copilot`, `gemini`); each needs its own account or API key
+- A failed AI tool install only prints a warning, so check the output if one is missing

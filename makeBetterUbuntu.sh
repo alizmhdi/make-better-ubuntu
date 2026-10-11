@@ -112,6 +112,30 @@ echo "Configuring Docker..."
 sudo systemctl enable docker
 sudo usermod -aG docker "$USER"
 
+# AI tools (a failed install only warns, since some of these services are region-restricted)
+echo "Installing AI tools..."
+
+# Claude Code (native installer, installs to ~/.local/bin)
+if [ ! -x "$HOME/.local/bin/claude" ]; then
+    curl -fsSL https://claude.ai/install.sh | bash || echo "Warning: Claude Code install failed"
+fi
+
+# Codex, GitHub Copilot, and Gemini CLIs
+for package in @openai/codex @github/copilot @google/gemini-cli; do
+    sudo npm install -g "$package" || echo "Warning: could not install $package"
+done
+
+# Ollama (run models locally)
+if ! command -v ollama > /dev/null 2>&1; then
+    curl -fsSL https://ollama.com/install.sh | sh || echo "Warning: Ollama install failed"
+fi
+
+# VS Code AI extensions
+for extension in GitHub.copilot-chat anthropic.claude-code openai.chatgpt; do
+    code --install-extension "$extension" --force || \
+        echo "Warning: could not install VS Code extension $extension"
+done
+
 # Install Snap packages
 echo "Installing Snap packages..."
 sudo snap install pycharm-community --classic
@@ -137,3 +161,5 @@ echo "Please restart your session for Docker group changes to take effect."
 echo "Installed applications:"
 echo "- Brave Browser, VS Code, Spotify, Node.js $(node -v), Python $(python --version)"
 echo "- Docker $(docker --version), PyCharm, Postman, Telegram, Discord"
+echo "- AI: Claude Code, Codex, GitHub Copilot CLI, Gemini CLI, Ollama"
+echo "Sign in to the AI tools on first run: claude, codex, copilot, gemini"
